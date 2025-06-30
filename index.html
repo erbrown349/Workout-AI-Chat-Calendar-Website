@@ -1,0 +1,479 @@
+
+<!DOCTYPE html> 
+<html lang="en"> 
+
+<head> 
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Workout</title>
+    <link rel="stylesheet" href="style.css"> 
+    <style>
+        .page { 
+            display: none;
+        }
+        .page.active { 
+            display: block; 
+        }
+    </style>
+</head>  
+
+<body>  
+    
+    <div id="heroIntro">
+        <div class="hero-images">
+          <img class="hero-image base" src="images/AI.png" alt="Main Image">
+          <img class="hero-image hover" src="images/Calendar.png" alt="Hover Image">
+        </div>
+        <h1 class="hero-heading">Set Your Workout Journey in Motion</h1>
+        <div class="hero-enter">↓ Enter</div>
+    </div>
+    <div id="homeButtonWrapper">
+        <button class="setworkout" onclick="showPage('mainPage')">SetWorkout!!!</button>
+    </div>
+    <div id="mainPage" class="page active">  
+        <div class="carousel-container">
+            <img class="hero-slide active" src="https://www.crst.com/wp-content/uploads/2024/08/Trucker-Workout-Tips.jpg" alt="Hero 1">
+            <img class="hero-slide" src="https://lakeshoresf.com/wp-content/uploads/2022/12/How-to-Schedule-Your-Weekly-Workout-Routine-scaled.jpg" alt="Hero 2">
+            <img class="hero-slide" src="https://www.villagegym.co.uk/media/dz2mhj3y/untitled-19.jpg" alt="Hero 3">
+          </div>
+        <div class="Main"> 
+            <h1>Set Your Workout Plan Today!</h1> 
+            <p>Use this website for very basic knowledge on cardio and weight lifting. You will be able to list the reps you take on a set, calendar your workout within the week and throughout the months, and remind yourself to get off your Dorito-stained couch and workout.</p>
+        </div>
+        <div class="center-wrapper">
+            <button class="startbutton" onclick="showPage('choicePage1')">Start</button> 
+            <button class="AIbutton" onclick="showPage('choicePage16')">Talk to AI</button> 
+            <button class="calendarbutton" onclick="showPage('choicePage6')">Log Workout With Calendar</button> 
+        </div>
+    </div>  
+
+    <div id="choicePage1" class="page">  
+        <div class="choice1">   
+            <img class="choice-image" src="https://www.mensfitness.com/.image/w_3840,q_auto:good,c_fill,ar_4:3/MjEyNzM5ODA3Nzc0Nzc4ODg5/man-riding-stationary-bike-in-gym.jpg" alt="Fitness Choice"> 
+            <img class="choice-image1" src="https://assets-varnish.triblive.com/2021/09/4249436_web1_web-weights.jpg" alt="Fitness Choice1">
+
+            <h2>What do you want to manage with first?</h2>
+            <button class ="startcardio" onclick="showPage('choicePage2')">Cardio</button>   
+            <button class ="startweight" button onclick="showPage('choicePage7')">Weight Lifting and Gaining Muscle</button>   
+            <p class="cardio">Cardio: 150 minutes are recommended by the CDC and WHO. Cardio reduces risk of heart disease, stroke, type 2 diabetes, depression, anxiety, and high blood pressure. Regular cardio can reduce early death risk by 20–40%.</p> 
+            <p class="weight">Weight lifting helps your body stay younger, protects your heart, bones, brain, and reduces stress and anxiety.</p>
+        </div>
+    </div>  
+
+    <div id="choicePage7" class="page"> 
+        <div class="choice2">  
+            <img class="choice-image2" src="https://britishweightlifting.org/images/tinymce/180521142907-danielle-cerullo-CQfNt66ttZM-unsplash.jpg" alt="Fitness Choice2">
+
+            <h3>What Type of Muscle Groups do you want to hit today or the next day?</h3> 
+            <button class= "biceps" onclick="showPage('choicePage8')">Biceps</button>   
+            <button class = "triceps" onclick="showPage('choicePage9')">Triceps</button>  
+            <button class = "shoulders" onclick="showPage('choicePage10')">Shoulders</button>    
+            <button class = "chest"onclick="showPage('choicePage11')">Chest</button>   
+            <button class = "abs" onclick="showPage('choicePage12')">Abs</button> 
+            <button class = "glutes" onclick="showPage('choicePage13')">Glutes</button> 
+            <button class = "legs" onclick="showPage('choicePage14')">Legs</button>
+            <button class = "back" onclick="showPage('choicePage15')">Back</button>
+        </div> 
+    </div>   
+
+    <div id="choicePage8" class="page"> 
+        <div class="choice7">   
+            <img class="choice-image2" src="https://www.gymreapers.com/cdn/shop/articles/header-10-best-biceps-exercises-for-Mass.png?v=1719875122&width=2048" alt="Fitness Choice2">
+  
+            <h6>Choose a biceps workout: Simple and effective Biceps exercises are: Bicep curls, preacher curls? Or Other methods to train your biceps? What do you want to start with?</h6> 
+            <button onclick="sendChoiceToAI(this)">Bicep Curls: Trains Biceps.</button> 
+            <button onclick="sendChoiceToAI(this)">Preacher Curls: Trains Biceps.</button> 
+            <button onclick="showPage('choicePage16')">Other / Write it in.</button> 
+        </div> 
+    </div>    
+
+    <div id="choicePage9" class="page"> 
+        <div class="choice8">    
+            <img class="choice-image2" src="https://www.ativafit.com/cdn/shop/articles/Tricep_workouts_15139962-7212-4dbd-98e0-945a40f00087.jpg?v=1745229093" alt="Fitness Choice2">
+ 
+            <h6>Choose a triceps workout: Simple and effective Triceps exercises are: Tricep Pushdowns (cable), Overhead Tricep Extenion (Dumbbell or cable)? Or Other methods to train your triceps? What do you want to start with?</h6> 
+            <button class = "tricepexercise" onclick="sendChoiceToAI(this)">Tricep Pushdowns: Trains Triceps.</button> 
+            <button class = "tricepexercise1" onclick="sendChoiceToAI(this)">Overhead Tricep Extension (Dumbbell or cable): Trains Triceps.</button> 
+            <button class = "tricepexercise2" onclick="showPage('choicePage16')">Other / Write it in.</button> 
+        </div> 
+    </div>  
+
+    <div id="choicePage10" class="page"> 
+        <div class="choice9">     
+            <img class="choice-image2" src="https://www.dmoose.com/cdn/shop/articles/MicrosoftTeams-image_1_29b754c2-6dfe-4316-813c-89a5f777c1bb.jpg?v=1657813512&width=800" alt="Fitness Choice2">
+            <h6>Choose a shoulder workout: Unlike other muscles, the shoulder muscles need to be exercised in different categories, Front delts(Anterior), Side delts(Lateral/Medial), and rear delts (Posterior). Or Other methods to train your shoulder muscles? What do you want to start with?</h6> 
+            <button class = "shoulderexercise" onclick="sendChoiceToAI(this)">Bench Press: Trains Chest, Traps, and Front delts.</button> 
+            <button class = "shoulderexercise1" onclick="sendChoiceToAI(this)">Rear Delt Fly(Dumbbells, Machine, or Cables): Trains Rear delts.</button>  
+            <button class = "shoulderexercise2" onclick="sendChoiceToAI(this)">Cable Lateral Raises: Trains Side delts.</button>  
+            <button class = "shoulderexercise3" onclick="showPage('choicePage16')">Other / Write it in.</button>   
+        </div> 
+    </div>    
+
+    <div id="choicePage11" class="page"> 
+        <div class="choice10">    
+            <img class="choice-image2" src="https://images.ctfassets.net/8urtyqugdt2l/4wPk3KafRwgpwIcJzb0VRX/4894054c6182c62c1d850628935a4b0b/desktop-best-chest-exercises.jpg" alt="Fitness Choice2">
+ 
+            <h6>Choose a chest workout: Simple and effective Chest exercises are: Bench Press, Cable Fly. Or Other methods to train your chest muscles? What do you want to start with?</h6> 
+            <button class = "chestexercise" onclick="sendChoiceToAI(this)">Bench Press: Trains Chest, Traps, and Front delts.</button> 
+            <button class = "chestexercise1" onclick="sendChoiceToAI(this)">Cable Fly(or Pec deck Machine): Trains Chest.</button>  
+            <button class = "chestexercise2" onclick="showPage('choicePage16')">Other / Write it in.</button> 
+        </div> 
+    </div>   
+    
+    <div id="choicePage12" class="page"> 
+        <div class="choice11">
+            <img class="choice-image2" src="https://www.dmoose.com/cdn/shop/articles/1_f607c1e6-fb1a-45f8-bb2e-4dbf0ea4827f.jpg?v=1647865926" alt="Fitness Choice2">
+    
+            <h6>Choose an ab workout: Simple and effective Ab exercises are: Cable Crunches, and Reverse Crunches? Or Other methods to train your ab muscles? What do you want to start with?</h6> 
+            <button onclick="sendChoiceToAI(this)">Cable Crunches</button> 
+            <button onclick="sendChoiceToAI(this)">Reverse Crunches</button>  
+            <button onclick="showPage('choicePage16')">Other / Write it in.</button> 
+        </div> 
+    </div>    
+
+    <div id="choicePage13" class="page"> 
+        <div class="choice12">    
+            <img class="choice-image2" src="https://titan.fitness/cdn/shop/articles/Bulgarian_Split_Squats_Benefits_Muscles_Worked_and_How_To.webp?v=1717006934" alt="Fitness Choice2">
+ 
+            <h6>Choose a glute workout: Simple and effective glute exercises are: Bulgarian Split Squats, and Cable Kickbacks? Or Other methods to train your glute muscles? What do you want to start with?</h6> 
+            <button class = "gluteexercise" onclick="sendChoiceToAI(this)">Bulgarian Split Squats: Trains the glutes, quads, hamstrings, and calves.</button> 
+            <button class = "gluteexercise1" onclick="sendChoiceToAI(this)">Cable Kickbacks: Trains the glutes.</button>  
+            <button class = "gluteexercise2" onclick="showPage('choicePage16')">Other / Write it in.</button> 
+        </div> 
+    </div>  
+
+    <div id="choicePage14" class="page"> 
+        <div class="choice13">  
+            <img class="choice-image2" src="https://cdn.sanity.io/images/263h0ltd/production/def42fd80187e2dfd64b61490ebd05a6f4a468cc-600x400.jpg?w=662&h=441&q=90&fit=fillmax&auto=format" alt="Fitness Choice2">
+   
+            <h6>Choose a leg workout: Unlike other muscles, the three leg muscles need to be exercised in different categories, Quads, hamstrings, and calves. Or Other methods to train your leg muscles? What do you want to start with?</h6> 
+            <button class = "legexercise" onclick="sendChoiceToAI(this)">Bulgarian Split Squats: Trains the glutes, quads, hamstrings, and calves.</button> 
+            <button class = "legexercise1" onclick="sendChoiceToAI(this)">Overhead Squats: Trains the glutes.</button>  
+            <button class = "legexercise2" onclick="showPage('choicePage16')">Other / Write it in.</button> 
+        </div> 
+    </div>  
+
+    <div id="choicePage15" class="page"> 
+        <div class="choice14">   
+            <img class="choice-image2" src="https://dr7an409rgayl.cloudfront.net/files/ca56005/hero/hero_1380_js-lat-pulldown-master-class-header.jpg" alt="Fitness Choice2">
+  
+            <h6>Choose a back workout: Unlike other muscles, the three back muscles need to be exercised in different categories, Traps (upper backs), Lats (Mid Backs), and Erector spinae (Lower Back). Or Other methods to train your back muscles? What do you want to start with?</h6> 
+            <button class = "backexercise" onclick="sendChoiceToAI(this)">Dumbbell Shrugs: Trains the Traps.</button> 
+            <button class = "backexercise1" onclick="sendChoiceToAI(this)">Lat Pulldowns: Trains the lats.</button>  
+            <button class = "backexercise2" onclick="sendChoiceToAI(this)">Barbell Deadlifts: Trains the Erector spinae.</button>     
+            <button class = "backexercise3"onclick="showPage('choicePage16')">Other / Write it in.</button> 
+        </div> 
+    </div> 
+
+    <div id="choicePage2" class="page"> 
+        <div class="choice2">   
+            <img class="choice-image2" src="https://hips.hearstapps.com/hmg-prod/images/benefits-of-cycling-669908a7b9d15.jpg?crop=0.670xw:1.00xh;0.123xw,0&resize=640:*" alt="Fitness Choice2">
+ 
+            <h3>What Type of Cardio Are You Into?</h3> 
+            <button class="typecardio" onclick="showPage('choicePage3')">Light Cardio</button>   
+            <button class ="typecardio" onclick="showPage('choicePage4')">Medium Cardio</button>  
+            <button class = "typecardio" onclick="showPage('choicePage5')">Hard Cardio</button>  
+
+            <p class="cardiotype">Light Cardio: Walking, light dancing, cycling. Improves heart health, fat burning, mental health, and active recovery.</p> 
+            <p class="cardiotype">Medium Cardio: Brisk walking, light jogging. Helps with fitness, fat + carb burning, and metabolism.</p> 
+            <p class="cardiotype">Hard Cardio: Running, fast swimming, sprint cycling. High calorie burn, VO2 max, and performance boost.</p>
+        </div> 
+    </div>   
+
+    <div id="choicePage3" class="page"> 
+        <div class="choice3">   
+            <img class="choice-image2" src="https://hips.hearstapps.com/hmg-prod/images/mature-man-exercising-in-a-park-in-the-morning-royalty-free-image-1730482514.jpg" alt="Fitness Choice2">
+ 
+            <h4>Choose a Light Cardio:</h4>   
+            <button onclick="sendChoiceToAI(this)">Walking</button> 
+            <button onclick="sendChoiceToAI(this)">Light Dancing</button>  
+            <button onclick="sendChoiceToAI(this)">Cycling</button>
+            <button onclick="showPage('choicePage16')">Other / Write it in</button>
+        </div> 
+    </div> 
+
+    <div id="choicePage4" class="page"> 
+        <div class="choice4">   
+            <img class="choice-image2" src="https://scitechdaily.com/images/Light-Jogging-May-Be-Most-Optimal-for-Longevity.jpg" alt="Fitness Choice2">
+ 
+            <h4>Choose a Medium Cardio:</h4>   
+            <button onclick="sendChoiceToAI(this)">Brisk Walking</button> 
+            <button onclick="sendChoiceToAI(this)">Light Jogging</button>  
+            <button onclick="sendChoiceToAI(this)">Steady State Cycling</button>
+            <button onclick="showPage('choicePage16')">Other / Write it in</button>
+        </div> 
+    </div>
+
+    <div id="choicePage5" class="page"> 
+        <div class="choice5">   
+            <img class="choice-image2" src="https://www.sundried.com/cdn/shop/articles/c27ddca5b9550a6940dfef2581b6c38d_a85a896c-d49c-4375-bd4c-be7fe368d852.jpg?v=1745829701" alt="Fitness Choice2">
+ 
+            <h4>Choose a Hard Cardio:</h4>   
+            <button onclick="sendChoiceToAI(this)">Running</button> 
+            <button onclick="sendChoiceToAI(this)">Fast Swimming</button>  
+            <button onclick="sendChoiceToAI(this)">Sprint Cycling</button>
+            <button onclick="showPage('choicePage16')">Other / Write it in</button>
+        </div> 
+    </div>
+
+    <div id="choicePage6" class="page">
+        <div class="calendar-nav">
+            <button class = "changeweek" onclick="changeWeek(-1)">← Prev Week</button>
+            <h2 id="weekTitle"></h2>
+            <button class = "nextweek" onclick="changeWeek(1)">Next Week →</button>
+          </div>
+        
+          <div class="calendar-container">
+            <div id="calendar" class="calendar-grid"></div>
+          </div> 
+    </div> 
+        
+    <div id="choicePage16" class="page">
+        <button class="calendarbutton1" onclick="showPage('choicePage6')">Log Workout Within Calendar</button>
+        <p class="chatai">Talk to the AI Workout Trainer</p>
+      
+        <div class="chat-interface">
+          <div class="chat-sidebar">
+            <button class="new-chat" onclick="startNewChat()">+ New Chat</button>
+            <div id="sessionList"></div>
+          </div>
+      
+          <div class="chat-wrapper">
+            <img class="choice-image2" src="https://images.unsplash.com/photo-1639056610940-d7e9b0af3a99?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmVhdXRpZnVsJTIwc3Vuc2V0fGVufDB8fDB8fHww" alt="Fitness Choice2">
+      
+            <div id="chatContainer">
+              <div id="chatMessages"></div>
+              <div class="inputRow">
+                <input type="text" id="userInput" placeholder="Ask a workout question..." />
+                <button class="chatbutton" onclick="sendMessage()">Send</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+     <script> 
+  const hoverImage = document.querySelector(".hero-image.hover");
+const hero = document.getElementById("heroIntro");
+const mainPage = document.getElementById("mainPage");
+const enterBtn = document.querySelector('.hero-enter');
+
+let animationStarted = false;
+let revealFinished = false;
+let enlargeInterval = null;
+
+function transitionToMainPage() {
+  hero.style.transition = "opacity 1s ease";
+  hero.style.opacity = "0";
+
+  setTimeout(() => {
+    hero.style.display = "none";
+    mainPage.classList.add("active");
+  }, 1000);
+}
+
+hero.addEventListener("click", (e) => {
+  if (!animationStarted) {
+    animationStarted = true;
+    const rect = hero.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    let radius = 120;
+    const maxRadius = Math.max(window.innerWidth, window.innerHeight) * 1.5;
+    const step = 20;
+
+    enlargeInterval = setInterval(() => {
+      radius += step;
+      hoverImage.style.clipPath = `circle(${radius}px at ${x}px ${y}px)`;
+      hoverImage.style.filter = 'blur(3px)';
+
+      if (radius >= maxRadius) {
+        clearInterval(enlargeInterval);
+        hoverImage.style.clipPath = 'none';
+        hoverImage.style.filter = 'blur(0)';
+        hoverImage.classList.add("reveal-full");
+        revealFinished = true;
+        console.log("Reveal animation finished — waiting for next click...");
+      }
+    }, 30);
+  } else if (revealFinished) {
+    console.log("Second click detected — transitioning to mainPage");
+    transitionToMainPage();
+  }
+});
+
+hero.addEventListener("mousemove", (e) => {
+  if (animationStarted || revealFinished) return;
+  const rect = hero.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+  hoverImage.style.clipPath = `circle(120px at ${x}px ${y}px)`;
+});
+
+enterBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
+  transitionToMainPage();
+});
+
+function showPage(pageId) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const page = document.getElementById(pageId);
+  if (page) page.classList.add('active');
+  else console.warn(`Page with id "${pageId}" not found.`);
+} 
+let currentSessionId = null;
+
+function startNewChat() {
+  currentSessionId = crypto.randomUUID(); 
+  document.getElementById("chatMessages").innerHTML = "";
+}
+function loadChatSessions() {
+  fetch("http://localhost:5001/chat/sessions")
+    .then(res => res.json())
+    .then(sessions => {
+      const sessionList = document.getElementById("sessionList");
+      sessionList.innerHTML = "";
+
+      sessions.forEach(session => {
+        const div = document.createElement("div");
+        div.className = "session-preview";
+        div.style.display = "flex";
+        div.style.justifyContent = "space-between";
+        div.style.alignItems = "center";
+
+        const label = document.createElement("span");
+        label.textContent = session.first_message?.slice(0, 30) || "Untitled Chat";
+        label.style.flex = "1";
+        label.onclick = () => loadChatBySession(session._id);
+
+        const delBtn = document.createElement("button");
+        delBtn.className = "delete-dot";
+        delBtn.title = "Delete this chat";
+        delBtn.onclick = (e) => {
+          e.stopPropagation(); 
+          if (confirm("Are you sure you want to delete this chat?")) {
+            console.log("Attempting to delete session:", session._id, session.first_message);
+
+            fetch(`http://localhost:5001/chat/session/${session._id}`, {
+              method: "DELETE"
+            })
+              .then(res => {
+                console.log("Delete response status:", res.status);
+                if (!res.ok) {
+                  throw new Error("Failed to delete session");
+                }
+                return res.json();
+              })
+              .then(() => {
+                if (currentSessionId === session._id) {
+                  document.getElementById("chatMessages").innerHTML = "";
+                  currentSessionId = null;
+                }
+                loadChatSessions();
+              })
+              .catch(err => {
+                console.error("Delete error:", err);
+                alert("Failed to delete session. Check console for details.");
+              });
+          }
+        };
+
+        div.appendChild(label);
+        div.appendChild(delBtn);
+        sessionList.appendChild(div);
+      });
+    })
+    .catch(err => {
+      console.error("Error loading chat sessions:", err);
+    });
+}
+
+function loadChatBySession(sessionId) {
+  currentSessionId = sessionId;
+  fetch(`http://localhost:5001/chat/session/${sessionId}`)
+    .then(res => res.json())
+    .then(messages => {
+      const chatBox = document.getElementById("chatMessages");
+      chatBox.innerHTML = "";
+      messages.forEach(msg => {
+        const div = document.createElement("div");
+        div.className = `message ${msg.role}`;
+        div.textContent = (msg.role === "assistant" ? "FlexBot: " : "") + msg.content;
+        chatBox.appendChild(div);
+      });
+      chatBox.scrollTop = chatBox.scrollHeight;
+    });
+}
+
+function sendMessage() {
+  const input = document.getElementById("userInput");
+  const message = input.value.trim();
+  if (!message) return;
+
+  const chatBox = document.getElementById("chatMessages");
+  const userMsg = document.createElement("div");
+  userMsg.className = "message user";
+  userMsg.textContent = message;
+  chatBox.appendChild(userMsg);
+  chatBox.scrollTop = chatBox.scrollHeight;
+
+  input.value = "";
+
+  const waitingMsg = document.createElement("div");
+  waitingMsg.className = "message bot";
+  waitingMsg.id = "waitingMessage";
+  waitingMsg.textContent = "FlexBot is typing...";
+  chatBox.appendChild(waitingMsg);
+  chatBox.scrollTop = chatBox.scrollHeight;
+
+  fetch("http://localhost:5001/chat", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message, session_id: currentSessionId })
+  })
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById("waitingMessage").remove();
+      const botMsg = document.createElement("div");
+      botMsg.className = "message bot";
+      botMsg.textContent = `FlexBot: ${data.reply}`;
+      chatBox.appendChild(botMsg);
+      chatBox.scrollTop = chatBox.scrollHeight;
+
+      if (!currentSessionId && data.session_id) {
+        currentSessionId = data.session_id;
+      }
+
+      loadChatSessions(); 
+    })
+    .catch(err => {
+      console.error("Error:", err);
+      const waiting = document.getElementById("waitingMessage");
+      if (waiting) waiting.remove();
+
+      const errorMsg = document.createElement("div");
+      errorMsg.className = "message bot";
+      errorMsg.textContent = "FlexBot: Sorry, something went wrong.";
+      chatBox.appendChild(errorMsg);
+    });
+}
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  loadChatSessions();
+});
+
+function sendChoiceToAI(button) {
+  const text = button.textContent.trim();
+  showPage('choicePage16');
+  setTimeout(() => {
+    document.getElementById("userInput").value = text;
+    sendMessage();
+  }, 300);
+}
+
+</script>
+    <script src="script.js"></script> 
+    
+</body>
+</html> 
