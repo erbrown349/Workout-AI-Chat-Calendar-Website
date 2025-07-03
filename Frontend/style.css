@@ -1,0 +1,1494 @@
+* { 
+    box-sizing: border-box; 
+} 
+
+body {  
+    background-color: #000;
+    font-family: sans-serif; 
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+} 
+
+.Main {
+    padding-top: 150px;
+    text-align: center;
+}
+
+#mainPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    
+}  
+
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}  
+.hero-images {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  .hero-image {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all .8s ease; 
+  }
+  
+  .hero-image.hover {
+    opacity: 1;
+    z-index: 2;
+    filter: blur(0px);
+    clip-path: circle(120px at 50% 50%);
+    transition: clip-path 2s ease, filter 2s ease; 
+    pointer-events: auto; 
+
+  }
+  
+  .hero-image.hover.reveal-full {
+    clip-path: none !important;
+    filter: blur(0) !important; 
+
+    transition: clip-path 1s ease-in-out, filter 1s ease-in-out; 
+  }
+#heroIntro {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: black;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.hero-background {
+  position: absolute;  
+  top: 0; left: 0;
+
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.hero-overlay {
+  position: absolute;
+  width: 200px;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(255,255,255,0.5);
+}
+
+.hero-heading {
+  position: relative; 
+  color: #f6ff00;
+  top: 40px;
+  bottom: 20%;
+  font-size: 1.8rem; 
+  font-weight:bold; 
+  color: white;
+  z-index: 3;
+  text-shadow: 
+    0 0 5px #3dceaa, 
+    0 0 10px rgb(35, 170, 154), 
+    0 0 20px rgb(12, 79, 83), 
+    0 0 40px rgb(0, 0, 0);
+}
+
+.hero-enter {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  z-index: 4;
+  animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-10px); }
+}
+
+.carousel-container {
+  position: fixed; 
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.hero-slide {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.hero-slide.active {
+  opacity: 1;
+}
+
+  .carousel-container::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0,0,0.4); 
+    z-index: 1;
+  } 
+ 
+.choice-image{ 
+    position: fixed; 
+    top: 0; left: 0;
+    width: 50vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+} 
+
+.choice-image1{ 
+    position: fixed; 
+    top: 0; left: 50;
+    width: 50vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+}  
+
+.choice-image2{
+    position: fixed; 
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+}
+
+h1 { 
+    color: #f6ff00;
+    margin-bottom: 10px;  
+    position: relative;
+    top: -150px;  
+    transform: scale(3.8); 
+  transform-origin: top; 
+  font-family: Brush Script MT;   
+  text-shadow: 
+    0 0 5px #fff, 
+    0 0 10px #0ff, 
+    0 0 20px rgb(28, 171, 178), 
+    0 0 40px rgb(0, 0, 0);
+  
+
+} 
+
+p { 
+    color: #eeff00; 
+    font-family: 'Poppins', sans-serif;  
+    font-weight: bold;
+    max-width: 600px;
+    margin-top: 0;
+    margin-bottom: 40px; 
+    transform: scale(1.8); 
+  transform-origin: top; 
+  text-shadow: 
+    0 0 5px #fff, 
+    0 0 10px #0ff, 
+    0 0 20px rgb(0, 0, 1), 
+    0 0 40px rgb(0, 0, 0);
+}  
+
+#homeButtonWrapper {
+    position: fixed;
+    top: 0px;
+    left: 20px;
+    z-index: 9999;
+  }
+  
+  .setworkout {
+    padding: 10px 20px;
+    font-size: 2em;
+    font-family: 'Brush Script MT', cursive;
+    font-weight: bold;
+    text-align: center;
+    color: #eeff00;
+    background-color: #000000;
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+.startbutton {  
+    padding: 30px 50px; 
+    font-size: 6em;  
+    font-family: 'Montserrat', sans-serif; 
+    font-weight: bold;
+    text-align: center;
+    color: #ffffff;  
+    background-color: #56922c; 
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;   
+    transition: background-color 0.3s ease;  
+    position: relative;
+    bottom: -60px;   
+    left:250px; 
+} 
+
+.startbutton:hover { 
+    background-color: #87ff31;
+    color: white;
+} 
+
+.AIbutton{ 
+    padding: 0px 40px; 
+    font-size: 6em;  
+    font-family: 'Montserrat', sans-serif; 
+    font-weight: bold;
+    color: #ffffff;  
+    background-color: #56922c; 
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;   
+    transition: background-color 0.3s ease;  
+    position: relative;
+    bottom: -250px;  
+    left: -600px;   
+} 
+
+.AIbutton:hover{ 
+    background-color: #87ff31;
+    color: white; 
+} 
+
+.calendarbutton{ 
+    padding: 35px 40px; 
+    font-size: 3.3em;  
+    font-family: 'Montserrat', sans-serif; 
+    font-weight: bold;
+    color: #ffffff;  
+    background-color: #56922c; 
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;   
+    transition: background-color 0.3s ease;  
+    position: relative;
+    bottom: -100px; 
+    left: 300px;  
+ 
+} 
+
+.calendarbutton:hover { 
+    background-color: #87ff31;
+    color: white;
+}
+
+.weight{  
+    color: #f6ff00;
+    margin-bottom: 10px;  
+    position: relative;
+    top: 50px;   
+    left: 450px; 
+    font-family: 'Poppins', sans-serif;  
+    font-weight: bold;
+}
+ 
+.cardio{
+    color: #f6ff00;
+    margin-bottom: 10px;  
+    position: relative;
+    top: 200px;   
+    left: 450px;
+    font-family: 'Poppins', sans-serif;  
+    font-weight: bold;  
+} 
+
+h2{ 
+    color: #f6ff00;
+    font-family: Brush Script MT;  
+    font-size: 5em; 
+    margin-bottom: 10px;   
+    text-shadow: 
+    0 0 5px #fff, 
+    0 0 10px #0ff, 
+    0 0 20px rgb(56, 154, 169), 
+    0 0 40px rgb(32, 169, 190);
+
+}
+
+.startcardio{ 
+    padding: 30px 50px;  
+    font-size: 6em;  
+    font-family: 'Montserrat', sans-serif; 
+    font-weight: bold;
+    text-align: center;
+    color: #ffffff;  
+    background-color: #56922c; 
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;   
+    transition: background-color 0.3s ease;  
+    position: relative;
+    bottom: -80px;   
+}  
+
+.startcardio:hover{ 
+    background-color: #87ff31;
+    color: white;
+} 
+
+.startweight{ 
+    padding: 50px 50px; 
+    border-radius: 9999px; 
+    background-color: #56922c;  
+    font-size: 2em;  
+    position: relative;
+    right: -100px;
+    color: #ffffff;   
+    border: none; 
+    cursor:pointer; 
+    transition: background-color 0.3s ease; 
+    font-family: 'Montserrat', sans-serif; 
+    font-weight: bold; 
+    bottom: -60px;   
+
+} 
+
+.startweight:hover{ 
+    background-color: #87ff31;
+    color: white;
+}  
+
+
+.biceps{ 
+    background-color:#56922c;
+    color: #ffffff; 
+    padding: 40px 40px;
+    border: none;
+    cursor:pointer; 
+    transition: background-color 0.3s ease;  
+    font-family: 'Montserrat', sans-serif;
+    font-weight:bold; 
+    border-radius: 9999px; 
+    font-size: 2em;   
+    position: relative; 
+    top: -60px  
+} 
+
+.biceps:hover{ 
+    background-color: #87ff31;
+    color: white; 
+    
+} 
+
+.triceps{ 
+    background-color:#56922c; 
+    color:#ffffff; 
+    padding: 40px 40px;
+    border: none;
+    cursor:pointer; 
+    transition: background-color 0.3s ease;  
+    font-family: 'Montserrat', sans-serif;
+    font-weight:bold; 
+    border-radius: 9999px; 
+    font-size: 2em;   
+    position: relative; 
+    top: -60px  
+} 
+
+.triceps:hover{ 
+    background-color: #87ff31;
+    color: white; 
+} 
+
+.shoulders{ 
+    background-color:#56922c; 
+    color:#ffffff; 
+    padding: 40px 40px;
+    border: none;
+    cursor:pointer; 
+    transition: background-color 0.3s ease;  
+    font-family: 'Montserrat', sans-serif;
+    font-weight:bold; 
+    border-radius: 9999px; 
+    font-size: 2em; 
+    position: relative; 
+    top: -60px   
+} 
+
+.shoulders:hover{ 
+    background-color: #87ff31;
+    color: white; 
+} 
+
+.chest{ 
+    background-color:#56922c; 
+    color:#ffffff; 
+    padding: 40px 40px;
+    border: none;
+    cursor:pointer; 
+    transition: background-color 0.3s ease;  
+    font-family: 'Montserrat', sans-serif;
+    font-weight:bold; 
+    border-radius: 9999px; 
+    font-size: 2em;   
+    position: relative; 
+    top: -60px  
+} 
+
+.chest:hover{ 
+    background-color: #87ff31;
+    color: white; 
+} 
+
+.abs{ 
+    background-color:#56922c; 
+    color:#ffffff; 
+    padding: 40px 40px;
+    border: none;
+    cursor:pointer; 
+    transition: background-color 0.3s ease;  
+    font-family: 'Montserrat', sans-serif;
+    font-weight:bold; 
+    border-radius: 9999px; 
+    font-size: 2em;  
+    position: relative; 
+    top: -60px  
+} 
+
+.abs:hover{ 
+    background-color: #87ff31;
+    color: white; 
+} 
+
+.glutes{ 
+    background-color:#56922c; 
+    color:#ffffff; 
+    padding: 40px 40px;
+    border: none;
+    cursor:pointer; 
+    transition: background-color 0.3s ease;  
+    font-family: 'Montserrat', sans-serif;
+    font-weight:bold; 
+    border-radius: 9999px; 
+    font-size: 2em;  
+    position: relative; 
+    top: -60px  
+} 
+
+.glutes:hover{ 
+    background-color: #87ff31;
+    color: white; 
+}
+
+.legs{ 
+    background-color:#56922c; 
+    color:#ffffff; 
+    padding: 40px 40px;
+    border: none;
+    cursor:pointer; 
+    transition: background-color 0.3s ease;  
+    font-family: 'Montserrat', sans-serif;
+    font-weight:bold; 
+    border-radius: 9999px; 
+    font-size: 2em;  
+    position: relative; 
+    top: -60px   
+
+} 
+
+.legs:hover{ 
+    background-color: #87ff31;
+    color: white;
+} 
+
+.back{ 
+    background-color:#56922c; 
+    color:#ffffff; 
+    padding: 40px 40px;
+    border: none;
+    cursor:pointer; 
+    transition: background-color 0.3s ease;  
+    font-family: 'Montserrat', sans-serif;
+    font-weight:bold; 
+    border-radius: 9999px; 
+    font-size: 2em;  
+    position: relative; 
+    top: -60px  
+} 
+
+.back:hover{ 
+    background-color: #87ff31;
+    color: white;  
+}
+
+h6{ 
+    color: #f6ff00;
+    font-family: Brush Script MT;  
+    font-size: 4em; 
+    margin-bottom: 50px;  
+    position: relative;
+    top: -100px;    
+    text-shadow: 
+    0 0 5px #1b989d, 
+    0 0 10px rgb(19, 86, 86), 
+    0 0 20px rgb(16, 84, 90), 
+    0 0 40px rgb(13, 78, 82);
+
+} 
+ button:not([class]) { 
+    background-color:#56922c; 
+    color:#ffffff; 
+    padding: 40px 40px;
+    border: none;
+    cursor:pointer; 
+    transition: background-color 0.3s ease;  
+    font-family: 'Montserrat', sans-serif;
+    font-weight:bold; 
+    border-radius: 9999px; 
+    font-size: 2em; 
+    position: relative; 
+    top: -100px
+ } 
+
+ button:not([class]) :hover{ 
+    background-color: #87ff31;
+    color: white;
+} 
+
+h3{ 
+    color: #f6ff00;
+    font-family: Brush Script MT;  
+    font-size: 9em; 
+    margin-bottom: 50px;  
+    position: relative;
+    top: -80px;    
+    text-shadow: 
+    0 0 5px #fff, 
+    0 0 10px #0ff, 
+    0 0 20px rgb(51, 224, 247), 
+    0 0 40px rgb(0, 0, 0);
+} 
+
+.tricepexercise{ 
+    background-color:#56922c; 
+    color:#ffffff; 
+    padding: 40px 40px;
+    border: none;
+    cursor:pointer; 
+    transition: background-color 0.3s ease;  
+    font-family: 'Montserrat', sans-serif;
+    font-weight:bold; 
+    border-radius: 9999px; 
+    font-size: 2em; 
+    position: relative; 
+    top: -80px 
+}  
+
+.tricepexercise:hover{ 
+    background-color: #87ff31;
+    color: white;
+}
+
+.tricepexercise1{ 
+    background-color:#56922c; 
+    color:#ffffff; 
+    padding: 40px 40px;
+    border: none;
+    cursor:pointer; 
+    transition: background-color 0.3s ease;  
+    font-family: 'Montserrat', sans-serif;
+    font-weight:bold; 
+    border-radius: 9999px; 
+    font-size: 2em; 
+    position: relative; 
+    top: -50px  
+} 
+
+.tricepexercise1:hover{ 
+    background-color: #87ff31;
+    color: white;
+}
+
+.tricepexercise2{ 
+    background-color:#56922c; 
+    color:#ffffff; 
+    padding: 40px 40px;
+    border: none;
+    cursor:pointer; 
+    transition: background-color 0.3s ease;  
+    font-family: 'Montserrat', sans-serif;
+    font-weight:bold; 
+    border-radius: 9999px; 
+    font-size: 2em; 
+    position: relative; 
+    top: -50px   
+} 
+
+.tricepexercise2:hover{ 
+    background-color: #87ff31;
+    color: white;
+}
+
+.shoulderexercise{ 
+    background-color:#56922c; 
+    color:#ffffff; 
+    padding: 40px 40px;
+    border: none;
+    cursor:pointer; 
+    transition: background-color 0.3s ease;  
+    font-family: 'Montserrat', sans-serif;
+    font-weight:bold; 
+    border-radius: 9999px; 
+    font-size: 2em; 
+    position: relative; 
+    top: -100px 
+}  
+
+.shoulderexercise:hover{ 
+    background-color: #87ff31;
+    color: white;
+} 
+
+.shoulderexercise1{ 
+    background-color:#56922c; 
+    color:#ffffff; 
+    padding: 40px 40px;
+    border: none;
+    cursor:pointer; 
+    transition: background-color 0.3s ease;  
+    font-family: 'Montserrat', sans-serif;
+    font-weight:bold; 
+    border-radius: 9999px; 
+    font-size: 2em; 
+    position: relative; 
+    top: -80px 
+}  
+
+.shoulderexercise1:hover{ 
+    background-color: #87ff31;
+    color: white;
+}
+
+.shoulderexercise2{ 
+    background-color:#56922c; 
+    color:#ffffff; 
+    padding: 40px 40px;
+    border: none;
+    cursor:pointer; 
+    transition: background-color 0.3s ease;  
+    font-family: 'Montserrat', sans-serif;
+    font-weight:bold; 
+    border-radius: 9999px; 
+    font-size: 2em; 
+    position: relative; 
+    top: -60px;  
+}  
+
+
+.shoulderexercise2:hover{ 
+    background-color: #87ff31;
+    color: white;
+}
+
+.shoulderexercise3{ 
+    background-color:#56922c; 
+    color:#ffffff; 
+    padding: 40px 40px;
+    border: none;
+    cursor:pointer; 
+    transition: background-color 0.3s ease;  
+    font-family: 'Montserrat', sans-serif;
+    font-weight:bold; 
+    border-radius: 9999px; 
+    font-size: 2em; 
+    position: relative; 
+    top: -60px;  
+    left: 10px;
+
+} 
+
+.shoulderexercise3:hover{ 
+    background-color: #87ff31;
+    color: white; 
+} 
+
+.chestexercise{ 
+    background-color:#56922c; 
+    color:#ffffff; 
+    padding: 40px 40px;
+    border: none;
+    cursor:pointer; 
+    transition: background-color 0.3s ease;  
+    font-family: 'Montserrat', sans-serif;
+    font-weight:bold; 
+    border-radius: 9999px; 
+    font-size: 2em; 
+    position: relative; 
+    top: -60px 
+} 
+
+.chestexercise:hover{ 
+    background-color: #87ff31;
+    color: white; 
+} 
+
+.chestexercise1{ 
+    background-color:#56922c; 
+    color:#ffffff; 
+    padding: 40px 40px;
+    border: none;
+    cursor:pointer; 
+    transition: background-color 0.3s ease;  
+    font-family: 'Montserrat', sans-serif;
+    font-weight:bold; 
+    border-radius: 9999px; 
+    font-size: 2em; 
+    position: relative; 
+    top: -40px 
+}  
+
+.chestexercise1:hover{ 
+    background-color: #87ff31;
+    color: white; 
+} 
+
+.chestexercise2{ 
+    background-color:#56922c; 
+    color:#ffffff; 
+    padding: 40px 40px;
+    border: none;
+    cursor:pointer; 
+    transition: background-color 0.3s ease;  
+    font-family: 'Montserrat', sans-serif;
+    font-weight:bold; 
+    border-radius: 9999px; 
+    font-size: 2em; 
+    position: relative; 
+    top: -40px;
+    left: 10px;
+} 
+
+.chestexercise2:hover{ 
+    background-color: #87ff31;
+    color: white; 
+}  
+
+.gluteexercise{ 
+    background-color:#56922c; 
+    color:#ffffff; 
+    padding: 40px 40px;
+    border: none;
+    cursor:pointer; 
+    transition: background-color 0.3s ease;  
+    font-family: 'Montserrat', sans-serif;
+    font-weight:bold; 
+    border-radius: 9999px; 
+    font-size: 2em; 
+    position: relative; 
+    top: -40px;
+}  
+
+.gluteexercise:hover{ 
+    background-color: #87ff31;
+    color: white; 
+}  
+
+.gluteexercise1{ 
+    background-color:#56922c; 
+    color:#ffffff; 
+    padding: 40px 40px;
+    border: none;
+    cursor:pointer; 
+    transition: background-color 0.3s ease;  
+    font-family: 'Montserrat', sans-serif;
+    font-weight:bold; 
+    border-radius: 9999px; 
+    font-size: 2em; 
+    position: relative; 
+    top: 0px;
+}   
+
+.gluteexercise1:hover{ 
+    background-color: #87ff31;
+    color: white; 
+}  
+
+.gluteexercise2{ 
+    background-color:#56922c; 
+    color:#ffffff; 
+    padding: 40px 40px;
+    border: none;
+    cursor:pointer; 
+    transition: background-color 0.3s ease;  
+    font-family: 'Montserrat', sans-serif;
+    font-weight:bold; 
+    border-radius: 9999px; 
+    font-size: 2em; 
+    position: relative; 
+    top: 0px; 
+    left: 10px;
+}  
+
+.gluteexercise2:hover{ 
+    background-color: #87ff31;
+    color: white; 
+}  
+
+.legexercise{ 
+    background-color:#56922c; 
+    color:#ffffff; 
+    padding: 40px 40px;
+    border: none;
+    cursor:pointer; 
+    transition: background-color 0.3s ease;  
+    font-family: 'Montserrat', sans-serif;
+    font-weight:bold; 
+    border-radius: 9999px; 
+    font-size: 2em; 
+    position: relative; 
+    top: -80px; 
+}   
+
+.legexercise:hover{ 
+    background-color: #87ff31;
+    color: white; 
+}  
+
+.legexercise1{ 
+    background-color:#56922c; 
+    color:#ffffff; 
+    padding: 40px 40px;
+    border: none;
+    cursor:pointer; 
+    transition: background-color 0.3s ease;  
+    font-family: 'Montserrat', sans-serif;
+    font-weight:bold; 
+    border-radius: 9999px; 
+    font-size: 2em; 
+    position: relative; 
+    top: -50px; 
+}   
+
+.legexercise1:hover{ 
+    background-color: #87ff31;
+    color: white; 
+}  
+
+.legexercise2{ 
+    background-color:#56922c; 
+    color:#ffffff; 
+    padding: 40px 40px;
+    border: none;
+    cursor:pointer; 
+    transition: background-color 0.3s ease;  
+    font-family: 'Montserrat', sans-serif;
+    font-weight:bold; 
+    border-radius: 9999px; 
+    font-size: 2em; 
+    position: relative; 
+    top: -50px;  
+    left:10px;
+}   
+
+.legexercise2:hover{ 
+    background-color: #87ff31;
+    color: white; 
+}  
+
+.legexercise2{ 
+    background-color:#56922c; 
+    color:#ffffff; 
+    padding: 40px 40px;
+    border: none;
+    cursor:pointer; 
+    transition: background-color 0.3s ease;  
+    font-family: 'Montserrat', sans-serif;
+    font-weight:bold; 
+    border-radius: 9999px; 
+    font-size: 2em; 
+    position: relative; 
+    top: -50px;  
+    left:10px;
+}    
+
+.backexercise{ 
+    background-color:#56922c; 
+    color:#ffffff; 
+    padding: 40px 40px;
+    border: none;
+    cursor:pointer; 
+    transition: background-color 0.3s ease;  
+    font-family: 'Montserrat', sans-serif;
+    font-weight:bold; 
+    border-radius: 9999px; 
+    font-size: 2em; 
+    position: relative; 
+    top: -110px;  
+}   
+
+.backexercise:hover{ 
+    background-color: #87ff31;
+    color: white; 
+}  
+
+.backexercise1{ 
+    background-color:#56922c; 
+    color:#ffffff; 
+    padding: 40px 40px;
+    border: none;
+    cursor:pointer; 
+    transition: background-color 0.3s ease;  
+    font-family: 'Montserrat', sans-serif;
+    font-weight:bold; 
+    border-radius: 9999px; 
+    font-size: 2em; 
+    position: relative; 
+    top: -110px;  
+    left: 10px; 
+}    
+
+.backexercise1:hover{ 
+    background-color: #87ff31;
+    color: white; 
+}  
+
+.backexercise2{ 
+    background-color:#56922c; 
+    color:#ffffff; 
+    padding: 40px 40px;
+    border: none;
+    cursor:pointer; 
+    transition: background-color 0.3s ease;  
+    font-family: 'Montserrat', sans-serif;
+    font-weight:bold; 
+    border-radius: 9999px; 
+    font-size: 2em; 
+    position: relative; 
+    top: -90px;  
+}     
+
+.backexercise2:hover{ 
+    background-color: #87ff31;
+    color: white; 
+}  
+
+.backexercise3{ 
+    background-color:#56922c; 
+    color:#ffffff; 
+    padding: 40px 40px;
+    border: none;
+    cursor:pointer; 
+    transition: background-color 0.3s ease;  
+    font-family: 'Montserrat', sans-serif;
+    font-weight:bold; 
+    border-radius: 9999px; 
+    font-size: 2em; 
+    position: relative; 
+    top: -90px;   
+    left: 10px;
+}   
+
+.backexercise3:hover{ 
+    background-color: #87ff31;
+    color: white; 
+}  
+
+.typecardio{ 
+    background-color:#56922c; 
+    color:#ffffff; 
+    padding: 40px 40px;
+    border: none;
+    cursor:pointer; 
+    transition: background-color 0.3s ease;  
+    font-family: 'Montserrat', sans-serif;
+    font-weight:bold; 
+    border-radius: 9999px; 
+    font-size: 2em;  
+    position:relative; 
+    top: -70px;  
+    left: 20px;
+} 
+
+.typecardio:hover{ 
+    background-color: #87ff31;
+    color: white;
+}
+ 
+.cardiotype { 
+    color: #eeff00; 
+    font-family: 'Poppins', sans-serif;  
+    font-weight: bold;
+    max-width: 600px;
+    margin-top: 0;
+    margin-bottom: 40px; 
+    transform: scale(1.8); 
+    transform-origin: top;  
+    position: relative;
+    top: -30px;   
+    left: 450px; 
+}  
+
+h4{ 
+    color: #f6ff00;
+    font-family: Brush Script MT;  
+    font-size: 9em; 
+    margin-bottom: 50px;  
+    position: relative;
+    top: -150px;    
+    text-shadow: 
+    0 0 5px #fff, 
+    0 0 10px #0ff, 
+    0 0 20px rgb(49, 211, 197), 
+    0 0 40px rgb(67, 215, 190);
+}
+
+.page {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(0, 0, 0); 
+    overflow-y: auto;
+    z-index: 0; 
+    pointer-events: none;
+} 
+
+.page.active {
+    display: block;
+    z-index: 1; 
+    pointer-events: auto;
+}
+  
+  .calendar-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #222;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  } 
+
+.changeweek{ 
+    background-color:#56922c; 
+    color:#ffffff; 
+    padding: 20px 40px;
+    border: none;
+    cursor:pointer; 
+    transition: background-color 0.3s ease;  
+    font-family: 'Montserrat', sans-serif;
+    font-weight:bold; 
+    border-radius: 9999px; 
+    font-size: 2em; 
+    position: relative; 
+    top: 20px; 
+    left: 20px;
+  }  
+
+.changeweek:hover{ 
+    background-color: #87ff31;
+    color: white;
+  }
+
+.nextweek{ 
+    background-color:#56922c; 
+    color:#ffffff; 
+    padding: 20px 40px;
+    border: none;
+    cursor:pointer; 
+    transition: background-color 0.3s ease;  
+    font-family: 'Montserrat', sans-serif;
+    font-weight:bold; 
+    border-radius: 9999px; 
+    font-size: 2em; 
+    position: relative; 
+    top: 20px
+} 
+
+.nextweek:hover{
+    background-color: #87ff31;
+    color: white;
+}
+  
+  .calendar-container {
+    overflow-x: auto;
+  }
+  
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: 60px repeat(7, 1fr);
+    border-top: 1px solid #444; 
+    position: relative;
+
+  }
+  
+  .calendar-header {
+    background-color: #333;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    border-left: 1px solid #444;
+  }
+  
+  .calendar-hour {
+    font-size: 1.0em;
+  color: #a8eb0c;
+  text-align: right;
+  height: 40px;
+  padding-right: 5px;
+  white-space: wrap;
+
+  }
+  
+.calendar-cell {
+    border-top: 1px solid #444;
+    border-left: 1px solid #444;
+    height: 40px;
+    position: relative; 
+    overflow: visible;
+}
+  
+  .calendar-cell:hover {
+    background-color: #333;
+    cursor: pointer;
+  } 
+
+  .calendar-hour small {
+    font-size: 10px;
+    color: #aaa;
+    margin-left: 2px;
+  }
+  
+.event {
+    position: absolute;
+    left: 0;
+    width: 95%; 
+    background-color: rgba(190, 30, 30, 0.8);
+    border: 1px solid #ccc;
+    padding: 2px;
+    font-size: 0.75em;  
+    z-index: 1;
+    box-sizing: border-box;
+    border-radius: 4px; 
+    
+  }  
+
+
+#now-line {
+    position: absolute;
+    height: 2px;
+    background-color: red;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    pointer-events: none;
+  
+}  
+
+#now-line::after {
+    content: "";
+    position: absolute;
+    right: 5px;
+    top: -3px;
+    width: 6px;
+    height: 6px;
+    background: red;
+    border-radius: 50%;
+    animation: pulse 1s infinite;
+  }
+  
+  @keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.6; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+#calendar {
+    position: relative;
+  }
+
+  .event.overlap {
+    z-index: 2;
+
+  }
+  
+  .event.weights {
+    background-color: #4CAF50;
+    color: white;
+  } 
+
+.event.other {
+    background-color: #b4d811;
+    color: white;
+}
+
+  .event {
+  background-color: #4287f5;
+  color: white;
+  border-radius: 4px; 
+  min-height:40px;
+  box-sizing: border-box;
+  overflow: hidden;
+  z-index: 1; 
+  left:0; 
+  padding: 4px;
+  font-size: 0.85em;
+  line-height: 1.2;
+}
+
+.event small {
+    display: block;
+    font-size: 1em;
+    color: rgba(255, 255, 255, 0.6); 
+    font-family: Arial, Helvetica, sans-serif; 
+    font-weight: bold;
+  } 
+
+.event.cardio {
+  background-color: #d94f4f; 
+  margin: 0 !important;
+  padding: 2px 4px !important;
+  top: 0 !important;
+  transform: none !important;
+}
+
+.event.overlap {
+  z-index: 10;
+}
+
+.resize-handle {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 8px;
+    width: 100%;
+    cursor: ns-resize;
+    background-color: rgba(255, 255, 255, 0.2);
+  }  
+
+  .calendarbutton1{  
+    padding: 0px 20px; 
+    border: none;
+    cursor:pointer; 
+    transition: background-color 0.3s ease;  
+    font-family: 'Montserrat', sans-serif; 
+    color:#ffffff; 
+    background-color:#56922c; 
+    font-weight:bold; 
+    border-radius: 9999px; 
+    font-size: 2em; 
+    position: relative;  
+    left: 480px; 
+    bottom: -50px;
+  }
+
+  .chat-interface {
+    display: flex;
+    height: 675px;
+    position: relative;
+    top: 35px;  
+    left: 32px;  
+    max-width: 1400px
+  }
+  
+  .chat-sidebar {
+    width: 240px;
+    background-color: #222;
+    color: #fff;
+    padding: 15px;
+    overflow-y: auto;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px; 
+
+  }
+  
+  .new-chat {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #444;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer; 
+  }
+  
+  .session-preview {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background-color: #333;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    user-select: none;
+    margin-bottom: 8px;
+    color: white;
+  }
+  .session-preview:hover {
+    background-color: #555;
+  }
+  .session-preview span {
+    flex-grow: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 8px;
+  }
+  .delete-dot {
+    width: 12px;
+    height: 12px;
+    background-color: white;
+    border-radius: 50%;
+    border: none;
+    padding: 0;
+    margin-left: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  .delete-dot:hover {
+    background-color: #ff5555;
+  }
+  
+  .chat-wrapper {
+    flex: 1;
+    background-color: #648825;
+    color: white;
+    padding: 20px;
+    display: flex; 
+    flex-direction: column;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    position: relative; 
+    
+  }
+  
+  #chatContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column; 
+    
+  }
+  
+  #chatMessages {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .inputRow {
+    display: flex;
+    gap: 8px;
+  }
+  
+  #userInput {
+    flex: 1;
+    padding: 8px;
+    border-radius: 6px;
+    border: none;
+  }
+  
+  .chatbutton {
+    padding: 8px 12px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 9999px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1em;
+  }
+  
+  .chatbutton:hover {
+    background-color: #333;
+  }
+  
+  .message {
+    padding: 10px 15px;
+    border-radius: 15px;
+    max-width: 80%;
+    line-height: 1.4;
+    word-wrap: break-word;
+    font-size: 14px;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  .message.user {
+    background-color: #f0f0f0;
+    color: #000;
+    align-self: flex-end;
+    border-bottom-right-radius: 0;
+  }
+  
+  .message.bot {
+    background-color: #333;
+    color: #fff;
+    align-self: flex-start;
+    border-bottom-left-radius: 0;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  #waitingMessage::after {
+    content: '';
+    display: inline-block;
+    width: 1ch;
+    animation: dots 1s steps(3, end) infinite;
+  }
+  
+  @keyframes dots {
+    0% { content: ''; }
+    33% { content: '.'; }
+    66% { content: '..'; }
+    100% { content: '...'; }
+  }
+  
+  .chatai {
+    color: #eeff00;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    max-width: 600px;
+    position: relative;
+    top: 50px;
+    left: 440px;
+  }
+
