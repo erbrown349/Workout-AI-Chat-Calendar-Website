@@ -4,13 +4,13 @@ This FullStack website gives basic information within how to get fit and healthy
 
 # View Website ---> https://erbrown349.github.io/Workout-AI-Chat-Calendar-Website/
 
-# To make local Server
-# Clone the Repository
+# To make local Server to use Working AI and save Calendar Events across Multiple Devices to Database 
+# 1. Clone the Repository
 git clone https://github.com/yourusername/fitness-calendar-ai.git
 cd fitness-calendar-ai
 Backend Setup (Flask + MongoDB + LM Studio)
 
-# Install Python Packages
+# 2. Install Python Packages
 Make sure Python 3.9+ is installed.
 
 cd backend
@@ -25,20 +25,20 @@ python-dotenv
 requests
 </details> 
 
-# Set Up .env File
+# 3. Set Up .env File
 Create a .env file inside the backend/ folder:
 
 MONGO_URI=mongodb://localhost:27017
 Make sure MongoDB is installed and running.
 
-# Run the Flask Server
+# 4. Run the Flask Server
 python server.py
 The backend should now be running at:
 📡 http://localhost:5001
 
 Frontend Setup
 
-# Open index.html
+# 5. Open index.html
 From the frontend/ folder, open index.html in your browser (or run with a Live Server extension):
 
 frontend/index.html
@@ -60,19 +60,19 @@ LM_API_URL = "http://localhost:1234/v1/chat/completions"
 
 # To Run Backend Test Files 
 
-#  Clone your repo
+#  1. Clone your repo
 git clone https://github.com/your-username/Workoutwebsite.git
 cd Workoutwebsite/backend 
 
-#  Create and activate a virtual environment (optional but recommended)
+#  2. Create and activate a virtual environment (optional but recommended)
 python3 -m venv venv
 source venv/bin/activate   # on Mac/Linux
 or venv\Scripts\activate on Windows 
 
-#  Install dependencies
+#  3. Install dependencies
 pip install -r requirements.txt 
 
-#  Set environment variables (create .env file)
+#  4. Set environment variables (create .env file)
 Your .env should contain:
 MONGO_URI=your_mongodb_connection_string 
 
