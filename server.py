@@ -94,7 +94,8 @@ def calendar():
     if request.method == "POST":
         event = request.get_json()
         event["timestamp"] = datetime.datetime.utcnow()
-        calendar_collection.insert_one(event)
+        calendar_collection.insert_one(event) 
+        event["_id"] = str(event["_id"])  
         return jsonify({"status": "success", "event": event})
     elif request.method == "GET":
         events = calendar_collection.find()
