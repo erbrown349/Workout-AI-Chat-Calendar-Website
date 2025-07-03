@@ -59,8 +59,8 @@ LM_API_URL = "http://localhost:1234/v1/chat/completions"
 # To Run Backend Test Files 
 
 #  Clone your repo
-git clone https://github.com/your-username/website-frontendcoding.git
-cd website-frontendcoding/backend 
+git clone https://github.com/your-username/Workoutwebsite.git
+cd Workoutwebsite/backend 
 
 #  Create and activate a virtual environment (optional but recommended)
 python3 -m venv venv
