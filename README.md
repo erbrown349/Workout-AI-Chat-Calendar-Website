@@ -53,4 +53,29 @@ Download LM Studio
 Load a local model like Mistral 7B Instruct and run the server at:
 http://localhost:1234/v1/chat/completions
 Make sure your server.py is pointed to this URL:
-LM_API_URL = "http://localhost:1234/v1/chat/completions"
+LM_API_URL = "http://localhost:1234/v1/chat/completions" 
+
+
+# To Run Backend Test Files 
+
+#  Clone your repo
+git clone https://github.com/your-username/website-frontendcoding.git
+cd website-frontendcoding/backend 
+
+#  Create and activate a virtual environment (optional but recommended)
+python3 -m venv venv
+source venv/bin/activate   # on Mac/Linux
+or venv\Scripts\activate on Windows 
+
+#  Install dependencies
+pip install -r requirements.txt 
+
+#  Set environment variables (create .env file)
+Your .env should contain:
+MONGO_URI=your_mongodb_connection_string 
+
+#  Run the server
+python3 server.py 
+
+#  Run tests
+python3 test_server.py
