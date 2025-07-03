@@ -1,6 +1,0 @@
-<script>start("/Users/ericbrown/Documents/Workoutwebsite/backend/");</script>
-<script>onHasParentDirectory();</script>
-<script>addRow("__pycache__","__pycache__",1,96,"96 B",1751502922,"7/2/25, 8:35:22 PM");</script>
-<script>addRow("venv","venv",1,224,"224 B",1751502472,"7/2/25, 8:27:52 PM");</script>
-<script>addRow("server.py","server.py",0,3321,"3.2 kB",1751502861,"7/2/25, 8:34:21 PM");</script>
-<script>addRow("test_server.py","test_server.py",0,1146,"1.1 kB",1751501976,"7/2/25, 8:19:36 PM");</script>
