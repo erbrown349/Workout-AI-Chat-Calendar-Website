@@ -2,7 +2,7 @@
 
 This FullStack website gives basic information within how to get fit and healthy through weight lifting, and cardio. This website uses an Workout Based AI to give information on how to workout. In addition to this, you can use the website's calendar to log the type of workout you are doing, or what you are doing during the day, or log your reps and sets, and the duration of your workout/event. Additionally, the website saves chat logs with AI and Calendar Events to the MongoDB Database. 
 
-# View Website (FrontEnd Only) ---> https://erbrown349.github.io/Workout-AI-Chat-Calendar-Website/
+# View Website (FrontEnd) ---> https://erbrown349.github.io/Workout-AI-Chat-Calendar-Website/
 
 # Steps To make local Server to use Working AI and save Calendar Events across Multiple Devices to Database Below
 # 1. Clone the Repository
