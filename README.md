@@ -36,9 +36,7 @@ python server.py
 The backend should now be running at:
 📡 http://localhost:5001
 
-Frontend Setup
-
-# 5. Open index.html
+# 5. Frontend Setup: Open index.html
 From the frontend/ folder, open index.html in your browser (or run with a Live Server extension):
 
 frontend/index.html
