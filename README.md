@@ -4,7 +4,7 @@ This FullStack website gives basic information within how to get fit and healthy
 
 # View Website ---> https://workout-ai-chat-calendar-website-1.onrender.com
 
-# Steps To make local Server to use Working AI and save Calendar Events across Multiple Devices to Database Below
+# Steps To make local Server to use Working AI by Yourself and save Calendar Events across Multiple Devices to Database Below
 # 1. Clone the Repository
 git clone https://github.com/yourusername/fitness-calendar-ai.git
 cd fitness-calendar-ai
