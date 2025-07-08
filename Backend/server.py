@@ -22,10 +22,10 @@ calendar_collection = db.calendarEvents
 chat_collection = db.chatMessages
 
 # Local Language Model API (LM Studio)
-LM_API_URL = os.getenv("LM_API_URL", "http://localhost:1234/v1/chat/completions")
+LM_API_URL = "https://api.groq.com/openai/v1/chat/completions"
 HEADERS = {
     "Content-Type": "application/json",
-    "Authorization": "Bearer no-key-needed"
+    "Authorization": f"Bearer {os.getenv('GROQ_API_KEY')}"
 }
 
 @app.route("/chat", methods=["POST"])
@@ -46,13 +46,13 @@ def chat():
         })
 
         payload = {
-            "model": "mistral",
-            "messages": [
-                {"role": "system", "content": "You are FlexBot, a helpful fitness coach."},
-                {"role": "user", "content": user_msg}
-            ],
-            "temperature": 0.7
-        }
+    "model": "mixtral-8x7b-32768",  # or "llama3-70b-8192"
+    "messages": [
+        {"role": "system", "content": "You are FlexBot, a helpful fitness coach."},
+        {"role": "user", "content": user_msg}
+    ],
+    "temperature": 0.7
+    }
 
         response = requests.post(LM_API_URL, headers=HEADERS, json=payload, timeout=40)
         response.raise_for_status()
