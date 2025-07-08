@@ -6,7 +6,8 @@ This FullStack website gives basic information within how to get fit and healthy
 
 # Steps To make local Server to use Working AI by Yourself and save Calendar Events across Multiple Devices to Database Below
 # 1. Clone the Repository
-git clone https://github.com/yourusername/fitness-calendar-ai.git
+git clone https://github.com/yourusername/fitness-calendar-ai.git 
+Change fetch functions (Ex: 📡 http://localhost:5001) to your own local server.
 cd fitness-calendar-ai
 Backend Setup (Flask + MongoDB + LM Studio)
 
@@ -32,8 +33,9 @@ MONGO_URI=mongodb://localhost:27017
 Make sure MongoDB is installed and running.
 
 # 4. Run the Flask Server
-python server.py
+python3 server.py
 The backend should now be running at:
+Ex:
 📡 http://localhost:5001
 
 # 5. Frontend Setup: Open index.html
