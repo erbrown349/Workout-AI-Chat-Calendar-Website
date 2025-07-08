@@ -46,7 +46,7 @@ def chat():
         })
 
         payload = {
-    "model": "mixtral-8x7b-32768",  # or "llama3-70b-8192"
+    "model": "llama3-70b-8192",  # or "llama3-70b-8192"
     "messages": [
         {"role": "system", "content": "You are FlexBot, a helpful fitness coach."},
         {"role": "user", "content": user_msg}
