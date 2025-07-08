@@ -14,7 +14,7 @@ function getStartOfWeek(date) {
 function saveEvents() {
   localStorage.setItem('calendarEvents', JSON.stringify(events));
   events.forEach(event => {
-    fetch("http://localhost:5001/calendar", {
+    fetch("https://workout-ai-chat-calendar-website.onrender.com/calendar", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -25,7 +25,7 @@ function saveEvents() {
 } 
 
 function loadEvents() {
-  fetch("http://localhost:5001/calendar")
+  fetch("https://workout-ai-chat-calendar-website.onrender.com/calendar")
     .then(res => res.json())
     .then(data => {
       try {
@@ -71,8 +71,8 @@ function renderCalendar(date) {
   }
 
   let today = new Date();
-today.setHours(0, 0, 0, 0);
-let firstTodayCell = null;
+  today.setHours(0, 0, 0, 0);
+  let firstTodayCell = null;
 
   for (let block = 0; block < 96; block++) {
     const minutes = block * 15;
@@ -104,10 +104,10 @@ let firstTodayCell = null;
       cell.style.position = 'relative'; 
 
       const cellDay = new Date(cellDate);
-    cellDay.setHours(0, 0, 0, 0);
-    if (cellDay.getTime() === today.getTime() && !firstTodayCell) {
-      firstTodayCell = cell;
-    }
+      cellDay.setHours(0, 0, 0, 0);
+      if (cellDay.getTime() === today.getTime() && !firstTodayCell) {
+        firstTodayCell = cell;
+      }
 
       let eventList = events.filter(event => {
         const eventStart = Number(event.date);
@@ -131,11 +131,11 @@ let firstTodayCell = null;
         const endDate = new Date(startDate.getTime() + (event.duration || 15) * 60000);
 
         const formatTime = date => {
-        const h = date.getHours();
-        const m = date.getMinutes();
-        const ampm = h < 12 ? 'AM' : 'PM';
-        const hr = h % 12 || 12;
-        return `${hr}:${m.toString().padStart(2, '0')} ${ampm}`;
+          const h = date.getHours();
+          const m = date.getMinutes();
+          const ampm = h < 12 ? 'AM' : 'PM';
+          const hr = h % 12 || 12;
+          return `${hr}:${m.toString().padStart(2, '0')} ${ampm}`;
         };
 
         const startTimeStr = formatTime(startDate);
@@ -271,19 +271,19 @@ let firstTodayCell = null;
     nowLine.style.zIndex = '100';
     firstTodayCell.appendChild(nowLine);
   }
-    const end = new Date(start);
-    end.setDate(end.getDate() + 6);
+  const end = new Date(start);
+  end.setDate(end.getDate() + 6);
 
-    positionNowLine(); 
-    weekTitle.textContent = `${start.toLocaleDateString()} - ${end.toLocaleDateString()}`;
+  positionNowLine(); 
+  weekTitle.textContent = `${start.toLocaleDateString()} - ${end.toLocaleDateString()}`;
 }  
 
 function getGridHeaderHeight() {
-    const calendar = document.getElementById('calendar');
-    const headerElements = [...calendar.children].slice(0, 8);
-    const headerHeight = headerElements[1]?.offsetHeight || 0;
-    return headerHeight; 
-  }
+  const calendar = document.getElementById('calendar');
+  const headerElements = [...calendar.children].slice(0, 8);
+  const headerHeight = headerElements[1]?.offsetHeight || 0;
+  return headerHeight; 
+}
 
 function positionNowLine() {
   const nowLine = document.getElementById('now-line');
@@ -312,9 +312,9 @@ function positionNowLine() {
   nowLine.style.top = `${top}px`;
 }
 
-  setInterval(() => {
-    positionNowLine();
-  }, 1000); 
+setInterval(() => {
+  positionNowLine();
+}, 1000); 
 
 function changeWeek(offset) {
   currentDate.setDate(currentDate.getDate() + offset * 7);
@@ -322,55 +322,54 @@ function changeWeek(offset) {
   positionNowLine();
 } 
 
-
 loadEvents();
 
 function sendMessage() {
-    const input = document.getElementById("userInput");
-    const message = input.value.trim();
-    if (!message) return;
-  
-    const chatBox = document.getElementById("chatMessages");
-  
-    const userMsg = document.createElement("div");
-    userMsg.className = "message user";
-    userMsg.textContent = message;
-    chatBox.appendChild(userMsg);
-    chatBox.scrollTop = chatBox.scrollHeight;
-  
-    input.value = "";
-  
-    const waitingMsg = document.createElement("div");
-    waitingMsg.className = "message bot";
-    waitingMsg.id = "waitingMessage";
-    waitingMsg.textContent = "FlexBot is typing...";
-    chatBox.appendChild(waitingMsg);
-    chatBox.scrollTop = chatBox.scrollHeight;
-  
-    fetch("http://localhost:5001/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message })
+  const input = document.getElementById("userInput");
+  const message = input.value.trim();
+  if (!message) return;
+
+  const chatBox = document.getElementById("chatMessages");
+
+  const userMsg = document.createElement("div");
+  userMsg.className = "message user";
+  userMsg.textContent = message;
+  chatBox.appendChild(userMsg);
+  chatBox.scrollTop = chatBox.scrollHeight;
+
+  input.value = "";
+
+  const waitingMsg = document.createElement("div");
+  waitingMsg.className = "message bot";
+  waitingMsg.id = "waitingMessage";
+  waitingMsg.textContent = "FlexBot is typing...";
+  chatBox.appendChild(waitingMsg);
+  chatBox.scrollTop = chatBox.scrollHeight;
+
+  fetch("https://workout-ai-chat-calendar-website.onrender.com/chat", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message })
+  })
+    .then(res => res.json())
+    .then(data => {
+      const waiting = document.getElementById("waitingMessage");
+      if (waiting) waiting.remove();
+
+      const botMsg = document.createElement("div");
+      botMsg.className = "message bot";
+      botMsg.textContent = `FlexBot: ${data.reply}`;
+      chatBox.appendChild(botMsg);
+      chatBox.scrollTop = chatBox.scrollHeight;
     })
-      .then(res => res.json())
-      .then(data => {
-        const waiting = document.getElementById("waitingMessage");
-        if (waiting) waiting.remove();
-  
-        const botMsg = document.createElement("div");
-        botMsg.className = "message bot";
-        botMsg.textContent = `FlexBot: ${data.reply}`;
-        chatBox.appendChild(botMsg);
-        chatBox.scrollTop = chatBox.scrollHeight;
-      })
-      .catch(err => {
-        console.error("Error:", err);
-        const waiting = document.getElementById("waitingMessage");
-        if (waiting) waiting.remove();
-  
-        const botMsg = document.createElement("div");
-        botMsg.className = "message bot";
-        botMsg.textContent = "FlexBot: Sorry, something went wrong.";
-        chatBox.appendChild(botMsg);
-      });
-  }
+    .catch(err => {
+      console.error("Error:", err);
+      const waiting = document.getElementById("waitingMessage");
+      if (waiting) waiting.remove();
+
+      const botMsg = document.createElement("div");
+      botMsg.className = "message bot";
+      botMsg.textContent = "FlexBot: Sorry, something went wrong.";
+      chatBox.appendChild(botMsg);
+    });
+}

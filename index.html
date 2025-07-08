@@ -21,8 +21,8 @@
     
     <div id="heroIntro">
         <div class="hero-images">
-          <img class="hero-image base" src="images/AI.png" alt="Main Image">
-          <img class="hero-image hover" src="images/Calendar.png" alt="Hover Image">
+          <img class="hero-image base" src="Images/AI.png" alt="Main Image">
+          <img class="hero-image hover" src="Images/Calendar.png" alt="Hover Image">
         </div>
         <h1 class="hero-heading">Set Your Workout Journey in Motion</h1>
         <div class="hero-enter">↓ Enter</div>
@@ -252,227 +252,230 @@
         </div>
       </div>
 
-     <script> 
-  const hoverImage = document.querySelector(".hero-image.hover");
-const hero = document.getElementById("heroIntro");
-const mainPage = document.getElementById("mainPage");
-const enterBtn = document.querySelector('.hero-enter');
-
-let animationStarted = false;
-let revealFinished = false;
-let enlargeInterval = null;
-
-function transitionToMainPage() {
-  hero.style.transition = "opacity 1s ease";
-  hero.style.opacity = "0";
-
-  setTimeout(() => {
-    hero.style.display = "none";
-    mainPage.classList.add("active");
-  }, 1000);
-}
-
-hero.addEventListener("click", (e) => {
-  if (!animationStarted) {
-    animationStarted = true;
-    const rect = hero.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    let radius = 120;
-    const maxRadius = Math.max(window.innerWidth, window.innerHeight) * 1.5;
-    const step = 20;
-
-    enlargeInterval = setInterval(() => {
-      radius += step;
-      hoverImage.style.clipPath = `circle(${radius}px at ${x}px ${y}px)`;
-      hoverImage.style.filter = 'blur(3px)';
-
-      if (radius >= maxRadius) {
-        clearInterval(enlargeInterval);
-        hoverImage.style.clipPath = 'none';
-        hoverImage.style.filter = 'blur(0)';
-        hoverImage.classList.add("reveal-full");
-        revealFinished = true;
-        console.log("Reveal animation finished — waiting for next click...");
-      }
-    }, 30);
-  } else if (revealFinished) {
-    console.log("Second click detected — transitioning to mainPage");
-    transitionToMainPage();
-  }
-});
-
-hero.addEventListener("mousemove", (e) => {
-  if (animationStarted || revealFinished) return;
-  const rect = hero.getBoundingClientRect();
-  const x = e.clientX - rect.left;
-  const y = e.clientY - rect.top;
-  hoverImage.style.clipPath = `circle(120px at ${x}px ${y}px)`;
-});
-
-enterBtn.addEventListener("click", (e) => {
-  e.stopPropagation();
-  transitionToMainPage();
-});
-
-function showPage(pageId) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  const page = document.getElementById(pageId);
-  if (page) page.classList.add('active');
-  else console.warn(`Page with id "${pageId}" not found.`);
-} 
-let currentSessionId = null;
-
-function startNewChat() {
-  currentSessionId = crypto.randomUUID(); 
-  document.getElementById("chatMessages").innerHTML = "";
-}
-function loadChatSessions() {
-  fetch("http://localhost:5001/chat/sessions")
-    .then(res => res.json())
-    .then(sessions => {
-      const sessionList = document.getElementById("sessionList");
-      sessionList.innerHTML = "";
-
-      sessions.forEach(session => {
-        const div = document.createElement("div");
-        div.className = "session-preview";
-        div.style.display = "flex";
-        div.style.justifyContent = "space-between";
-        div.style.alignItems = "center";
-
-        const label = document.createElement("span");
-        label.textContent = session.first_message?.slice(0, 30) || "Untitled Chat";
-        label.style.flex = "1";
-        label.onclick = () => loadChatBySession(session._id);
-
-        const delBtn = document.createElement("button");
-        delBtn.className = "delete-dot";
-        delBtn.title = "Delete this chat";
-        delBtn.onclick = (e) => {
-          e.stopPropagation(); 
-          if (confirm("Are you sure you want to delete this chat?")) {
-            console.log("Attempting to delete session:", session._id, session.first_message);
-
-            fetch(`http://localhost:5001/chat/session/${session._id}`, {
-              method: "DELETE"
-            })
-              .then(res => {
-                console.log("Delete response status:", res.status);
-                if (!res.ok) {
-                  throw new Error("Failed to delete session");
-                }
-                return res.json();
-              })
-              .then(() => {
-                if (currentSessionId === session._id) {
-                  document.getElementById("chatMessages").innerHTML = "";
-                  currentSessionId = null;
-                }
-                loadChatSessions();
-              })
-              .catch(err => {
-                console.error("Delete error:", err);
-                alert("Failed to delete session. Check console for details.");
-              });
+      <script> 
+        const hoverImage = document.querySelector(".hero-image.hover");
+        const hero = document.getElementById("heroIntro");
+        const mainPage = document.getElementById("mainPage");
+        const enterBtn = document.querySelector('.hero-enter');
+      
+        let animationStarted = false;
+        let revealFinished = false;
+        let enlargeInterval = null;
+      
+        function transitionToMainPage() {
+          hero.style.transition = "opacity 1s ease";
+          hero.style.opacity = "0";
+      
+          setTimeout(() => {
+            hero.style.display = "none";
+            mainPage.classList.add("active");
+          }, 1000);
+        }
+      
+        hero.addEventListener("click", (e) => {
+          if (!animationStarted) {
+            animationStarted = true;
+            const rect = hero.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            let radius = 120;
+            const maxRadius = Math.max(window.innerWidth, window.innerHeight) * 1.5;
+            const step = 20;
+      
+            enlargeInterval = setInterval(() => {
+              radius += step;
+              hoverImage.style.clipPath = `circle(${radius}px at ${x}px ${y}px)`;
+              hoverImage.style.filter = 'blur(3px)';
+      
+              if (radius >= maxRadius) {
+                clearInterval(enlargeInterval);
+                hoverImage.style.clipPath = 'none';
+                hoverImage.style.filter = 'blur(0)';
+                hoverImage.classList.add("reveal-full");
+                revealFinished = true;
+                console.log("Reveal animation finished — waiting for next click...");
+              }
+            }, 30);
+          } else if (revealFinished) {
+            console.log("Second click detected — transitioning to mainPage");
+            transitionToMainPage();
           }
-        };
+        });
+      
+        hero.addEventListener("mousemove", (e) => {
+          if (animationStarted || revealFinished) return;
+          const rect = hero.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          hoverImage.style.clipPath = `circle(120px at ${x}px ${y}px)`;
+        });
+      
+        enterBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          transitionToMainPage();
+        });
+      
+        function showPage(pageId) {
+          document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+          const page = document.getElementById(pageId);
+          if (page) page.classList.add('active');
+          else console.warn(`Page with id "${pageId}" not found.`);
+        } 
+      
+        let currentSessionId = null;
 
-        div.appendChild(label);
-        div.appendChild(delBtn);
-        sessionList.appendChild(div);
-      });
-    })
-    .catch(err => {
-      console.error("Error loading chat sessions:", err);
-    });
-}
-
-function loadChatBySession(sessionId) {
-  currentSessionId = sessionId;
-  fetch(`http://localhost:5001/chat/session/${sessionId}`)
-    .then(res => res.json())
-    .then(messages => {
-      const chatBox = document.getElementById("chatMessages");
-      chatBox.innerHTML = "";
-      messages.forEach(msg => {
-        const div = document.createElement("div");
-        div.className = `message ${msg.role}`;
-        div.textContent = (msg.role === "assistant" ? "FlexBot: " : "") + msg.content;
-        chatBox.appendChild(div);
-      });
-      chatBox.scrollTop = chatBox.scrollHeight;
-    });
-}
-
-function sendMessage() {
-  const input = document.getElementById("userInput");
-  const message = input.value.trim();
-  if (!message) return;
-
-  const chatBox = document.getElementById("chatMessages");
-  const userMsg = document.createElement("div");
-  userMsg.className = "message user";
-  userMsg.textContent = message;
-  chatBox.appendChild(userMsg);
-  chatBox.scrollTop = chatBox.scrollHeight;
-
-  input.value = "";
-
-  const waitingMsg = document.createElement("div");
-  waitingMsg.className = "message bot";
-  waitingMsg.id = "waitingMessage";
-  waitingMsg.textContent = "FlexBot is typing...";
-  chatBox.appendChild(waitingMsg);
-  chatBox.scrollTop = chatBox.scrollHeight;
-
-  fetch("http://localhost:5001/chat", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ message, session_id: currentSessionId })
-  })
-    .then(res => res.json())
-    .then(data => {
-      document.getElementById("waitingMessage").remove();
-      const botMsg = document.createElement("div");
-      botMsg.className = "message bot";
-      botMsg.textContent = `FlexBot: ${data.reply}`;
-      chatBox.appendChild(botMsg);
-      chatBox.scrollTop = chatBox.scrollHeight;
-
-      if (!currentSessionId && data.session_id) {
-        currentSessionId = data.session_id;
-      }
-
-      loadChatSessions(); 
-    })
-    .catch(err => {
-      console.error("Error:", err);
-      const waiting = document.getElementById("waitingMessage");
-      if (waiting) waiting.remove();
-
-      const errorMsg = document.createElement("div");
-      errorMsg.className = "message bot";
-      errorMsg.textContent = "FlexBot: Sorry, something went wrong.";
-      chatBox.appendChild(errorMsg);
-    });
-}
-
-
-document.addEventListener("DOMContentLoaded", () => {
-  loadChatSessions();
-});
-
-function sendChoiceToAI(button) {
-  const text = button.textContent.trim();
-  showPage('choicePage16');
-  setTimeout(() => {
-    document.getElementById("userInput").value = text;
-    sendMessage();
-  }, 300);
-}
-
-</script>
+        //Backend URL
+        const backendBaseURL = "https://workout-ai-chat-calendar-website.onrender.com";
+      
+        function startNewChat() {
+          currentSessionId = crypto.randomUUID(); 
+          document.getElementById("chatMessages").innerHTML = "";
+        }
+      
+        function loadChatSessions() {
+          fetch(`${backendBaseURL}/chat/sessions`)
+            .then(res => res.json())
+            .then(sessions => {
+              const sessionList = document.getElementById("sessionList");
+              sessionList.innerHTML = "";
+      
+              sessions.forEach(session => {
+                const div = document.createElement("div");
+                div.className = "session-preview";
+                div.style.display = "flex";
+                div.style.justifyContent = "space-between";
+                div.style.alignItems = "center";
+      
+                const label = document.createElement("span");
+                label.textContent = session.first_message?.slice(0, 30) || "Untitled Chat";
+                label.style.flex = "1";
+                label.onclick = () => loadChatBySession(session._id);
+      
+                const delBtn = document.createElement("button");
+                delBtn.className = "delete-dot";
+                delBtn.title = "Delete this chat";
+                delBtn.onclick = (e) => {
+                  e.stopPropagation(); 
+                  if (confirm("Are you sure you want to delete this chat?")) {
+                    console.log("Attempting to delete session:", session._id, session.first_message);
+      
+                    fetch(`${backendBaseURL}/chat/session/${session._id}`, {
+                      method: "DELETE"
+                    })
+                      .then(res => {
+                        console.log("Delete response status:", res.status);
+                        if (!res.ok) {
+                          throw new Error("Failed to delete session");
+                        }
+                        return res.json();
+                      })
+                      .then(() => {
+                        if (currentSessionId === session._id) {
+                          document.getElementById("chatMessages").innerHTML = "";
+                          currentSessionId = null;
+                        }
+                        loadChatSessions();
+                      })
+                      .catch(err => {
+                        console.error("Delete error:", err);
+                        alert("Failed to delete session. Check console for details.");
+                      });
+                  }
+                };
+      
+                div.appendChild(label);
+                div.appendChild(delBtn);
+                sessionList.appendChild(div);
+              });
+            })
+            .catch(err => {
+              console.error("Error loading chat sessions:", err);
+            });
+        }
+      
+        function loadChatBySession(sessionId) {
+          currentSessionId = sessionId;
+          fetch(`${backendBaseURL}/chat/session/${sessionId}`)
+            .then(res => res.json())
+            .then(messages => {
+              const chatBox = document.getElementById("chatMessages");
+              chatBox.innerHTML = "";
+              messages.forEach(msg => {
+                const div = document.createElement("div");
+                div.className = `message ${msg.role}`;
+                div.textContent = (msg.role === "assistant" ? "FlexBot: " : "") + msg.content;
+                chatBox.appendChild(div);
+              });
+              chatBox.scrollTop = chatBox.scrollHeight;
+            });
+        }
+      
+        function sendMessage() {
+          const input = document.getElementById("userInput");
+          const message = input.value.trim();
+          if (!message) return;
+      
+          const chatBox = document.getElementById("chatMessages");
+          const userMsg = document.createElement("div");
+          userMsg.className = "message user";
+          userMsg.textContent = message;
+          chatBox.appendChild(userMsg);
+          chatBox.scrollTop = chatBox.scrollHeight;
+      
+          input.value = "";
+      
+          const waitingMsg = document.createElement("div");
+          waitingMsg.className = "message bot";
+          waitingMsg.id = "waitingMessage";
+          waitingMsg.textContent = "FlexBot is typing...";
+          chatBox.appendChild(waitingMsg);
+          chatBox.scrollTop = chatBox.scrollHeight;
+      
+          fetch(`${backendBaseURL}/chat`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ message, session_id: currentSessionId })
+          })
+            .then(res => res.json())
+            .then(data => {
+              document.getElementById("waitingMessage").remove();
+              const botMsg = document.createElement("div");
+              botMsg.className = "message bot";
+              botMsg.textContent = `FlexBot: ${data.reply}`;
+              chatBox.appendChild(botMsg);
+              chatBox.scrollTop = chatBox.scrollHeight;
+      
+              if (!currentSessionId && data.session_id) {
+                currentSessionId = data.session_id;
+              }
+      
+              loadChatSessions(); 
+            })
+            .catch(err => {
+              console.error("Error:", err);
+              const waiting = document.getElementById("waitingMessage");
+              if (waiting) waiting.remove();
+      
+              const errorMsg = document.createElement("div");
+              errorMsg.className = "message bot";
+              errorMsg.textContent = "FlexBot: Sorry, something went wrong.";
+              chatBox.appendChild(errorMsg);
+            });
+        }
+      
+        document.addEventListener("DOMContentLoaded", () => {
+          loadChatSessions();
+        });
+      
+        function sendChoiceToAI(button) {
+          const text = button.textContent.trim();
+          showPage('choicePage16');
+          setTimeout(() => {
+            document.getElementById("userInput").value = text;
+            sendMessage();
+          }, 300);
+        }
+      </script>
     <script src="script.js"></script>  
     
 </body>
