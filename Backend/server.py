@@ -7,19 +7,22 @@ import datetime
 import os
 import uuid
 from dotenv import load_dotenv
-load_dotenv()
 import certifi
+
+load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
 
+# MongoDB setup
 MONGO_URI = os.getenv("MONGO_URI", "mongodb://localhost:27017")
 client = MongoClient(MONGO_URI, tlsCAFile=certifi.where())
 db = client.Workout
 calendar_collection = db.calendarEvents
 chat_collection = db.chatMessages
 
-LM_API_URL = "http://localhost:1234/v1/chat/completions"
+# Local Language Model API (LM Studio)
+LM_API_URL = os.getenv("LM_API_URL", "http://localhost:1234/v1/chat/completions")
 HEADERS = {
     "Content-Type": "application/json",
     "Authorization": "Bearer no-key-needed"
@@ -30,6 +33,7 @@ def chat():
     data = request.get_json()
     user_msg = data.get("message", "")
     session_id = data.get("session_id", str(uuid.uuid4()))
+    
     if not user_msg:
         return jsonify({"reply": "Please ask a workout question."})
 
@@ -77,7 +81,7 @@ def get_sessions():
         }},
         {"$sort": {"timestamp": -1}}
     ])
-    return dumps(list(sessions)), 200 
+    return dumps(list(sessions)), 200
 
 @app.route("/chat/session/<session_id>", methods=["DELETE"])
 def delete_session(session_id):
@@ -94,12 +98,13 @@ def calendar():
     if request.method == "POST":
         event = request.get_json()
         event["timestamp"] = datetime.datetime.utcnow()
-        calendar_collection.insert_one(event) 
-        event["_id"] = str(event["_id"])  
+        calendar_collection.insert_one(event)
+        event["_id"] = str(event["_id"])
         return jsonify({"status": "success", "event": event})
     elif request.method == "GET":
         events = calendar_collection.find()
         return dumps(events), 200
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5001)
+    port = int(os.environ.get("PORT", 5001))  # Use PORT from Render
+    app.run(host="0.0.0.0", port=port)
